@@ -1,11 +1,11 @@
 import axios from 'axios';
 
 export function getVideoList() {
-    return (axios.get('http://localhost:8000/api/video'))
+    return (axios.get('/api/video'))
 }
 
 export function addVideo(obj) {
-    return axios.post('http://localhost:8000/api/video', obj, {
+    return axios.post('/api/video', obj, {
         headers: {
             'Content-Type': 'application/json',
         }
@@ -13,5 +13,5 @@ export function addVideo(obj) {
 }
 
 export function deleteVideo(id){
-    return axios.delete(`http://localhost:8000/api/video/${id}`)
+    return axios.delete(`/api/video/${id}`)
 }

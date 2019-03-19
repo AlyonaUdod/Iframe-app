@@ -3,7 +3,7 @@ import Iframe from 'react-iframe';
 import { connect } from 'react-redux';
 
 const Player = ({videoId}) => {
-    const url = `http://www.youtube.com/embed/${videoId}`;
+    const url = `https://www.youtube.com/embed/${videoId}`;
     return (
         <Iframe url={url}
             width="100%"
