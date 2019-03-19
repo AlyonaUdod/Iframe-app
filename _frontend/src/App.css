@@ -1,0 +1,72 @@
+.wrapper {
+  width: 80%;
+  margin: auto;
+  border-radius: 5px;
+  display: flex;
+}
+
+.content-wrapper {
+  width: 70%;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-flow: column wrap;
+  position: relative;
+}
+
+.seach-form {
+  width: 100%;
+  display: flex;
+}
+
+.seach-form__input {
+  width: 80%;
+  font-size: 1.1rem;
+  box-shadow: 0 0 5px rgb(214, 214, 214);
+}
+
+.seach-list {
+  width: 100%;
+  background: rgb(245, 245, 245);
+  position: absolute;
+  max-height: 70%;
+  top: 3rem;
+  overflow: auto;
+  z-index: 111111;
+}
+
+.player {
+  margin: 2rem auto;
+  box-shadow: 0 0 10px grey;
+  background: grey;
+}
+
+.list-content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 90%;
+}
+
+.block {
+  display: block;
+}
+
+.none {
+  display: none;
+}
+
+.history-wrapper {
+  width: 30%;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  padding: 1rem;
+}
+
+.history-list {
+  margin: auto;
+  width: 90%;
+  overflow: auto;
+  max-height: 63vh;
+}

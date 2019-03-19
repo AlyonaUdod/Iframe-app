@@ -1,0 +1,16 @@
+.historyItem {
+    display: flex;
+    justify-content: spase-between;
+    align-items: center;
+    margin: 0 1rem;
+}
+  
+.historyItem p {
+    font-weight: 700;
+    color: grey;
+}
+  
+.historyItem:hover p {
+    color: black;
+    cursor: pointer;
+}
