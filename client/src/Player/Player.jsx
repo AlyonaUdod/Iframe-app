@@ -7,7 +7,7 @@ const Player = ({videoId}) => {
     return (
         <Iframe url={url}
             width="100%"
-            height="60vh"
+            height="65vh"
             className="player"
             display="initial"
             position="relative"
