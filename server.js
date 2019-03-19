@@ -13,11 +13,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(cors());
 
-mongoose.Promise = global.Promise;
-mongoose.set('useNewUrlParser', true);
-mongoose.set('useFindAndModify', false);
-mongoose.set('useCreateIndex', true);
-mongoose.connect(process.env.MONGODB_URL);
+// mongoose.Promise = global.Promise;
+// mongoose.set('useNewUrlParser', true);
+// mongoose.set('useFindAndModify', false);
+// mongoose.set('useCreateIndex', true);
+// mongoose.connect(process.env.MONGODB_URL);
 
 app.use('/api/video', postsRoutes);
 app.use(express.static('./client/build'));
