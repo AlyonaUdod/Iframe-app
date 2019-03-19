@@ -7,11 +7,14 @@ import { addVideoToDB } from '../redux/actions/videoListAction';
 import { clearInput } from '../redux/actions/queryAction';
 
 
-const SeachItem = ({thumbnail, title, videoId, getVideoId, clearStore, addVideo, clearSeachInput}) => {
+const SeachItem = ({thumbnail, title, videoId, getVideoId, clearStore, addVideo, clearSeachInput, videoList}) => {
 
     function getId(id){
+        let video = videoList.find(el => el.videoId === id);
+        if(!video){
+            saveVideoToDB(id, title); 
+        }
         getVideoId(id);
-        saveVideoToDB(id, title);
         clearStore();
         clearSeachInput();
     }
@@ -37,6 +40,12 @@ const SeachItem = ({thumbnail, title, videoId, getVideoId, clearStore, addVideo,
     );
 }
 
+function MSTP (state){
+    return {
+       videoList: state.videoList
+    }
+}
+
 function MDTP (dispatch) {
     return {
         getVideoId: function(id){
@@ -54,4 +63,4 @@ function MDTP (dispatch) {
     }
   }
 
-export default connect(null, MDTP)(SeachItem);
+export default connect(MSTP, MDTP)(SeachItem);
