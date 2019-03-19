@@ -6,18 +6,17 @@ import { clearSeach } from '../redux/actions/seachAction';
 import { addVideoToDB } from '../redux/actions/videoListAction';
 import { clearInput } from '../redux/actions/queryAction';
 
-
 const SeachItem = ({thumbnail, title, videoId, getVideoId, clearStore, addVideo, clearSeachInput, videoList}) => {
 
     function getId(id){
         let video = videoList.find(el => el.videoId === id);
         if(!video){
             saveVideoToDB(id, title); 
-        }
+        };
         getVideoId(id);
         clearStore();
         clearSeachInput();
-    }
+    };
 
     function saveVideoToDB(id, title){
         let obj = {
@@ -25,7 +24,7 @@ const SeachItem = ({thumbnail, title, videoId, getVideoId, clearStore, addVideo,
             title: title,
         };
         addVideo(obj);
-    }
+    };
 
     return (
     <List.Item style={{display: 'flex', alignItems: 'center'}}>
@@ -38,29 +37,29 @@ const SeachItem = ({thumbnail, title, videoId, getVideoId, clearStore, addVideo,
         <Button style={{width: '15%'}} onClick={() => getId(videoId, title)}>PLAY</Button>
     </List.Item>
     );
-}
+};
 
 function MSTP (state){
     return {
        videoList: state.videoList
-    }
-}
+    };
+};
 
 function MDTP (dispatch) {
     return {
         getVideoId: function(id){
-            dispatch(getSingleVideo(id))
+            dispatch(getSingleVideo(id));
         },
         clearStore: function(){
-            dispatch(clearSeach())
+            dispatch(clearSeach());
         },
         clearSeachInput: function(){
-            dispatch(clearInput())
+            dispatch(clearInput());
         },
         addVideo: function(obj){
-            dispatch(addVideoToDB(obj))
+            dispatch(addVideoToDB(obj));
         }
-    }
-  }
+    };
+};
 
 export default connect(MSTP, MDTP)(SeachItem);

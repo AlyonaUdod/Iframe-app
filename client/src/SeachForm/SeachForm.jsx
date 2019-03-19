@@ -18,8 +18,9 @@ const SeachForm = ({queryText, handlerInputChange, clearStore, clearSeachInput, 
     function seachVideoOnYoutube(){
         if(queryText){
             seachVideo(queryText);
-        }
+        };
     };
+
     return (
         <Form className='seach-form' onSubmit={seachVideoOnYoutube}>
             <Input className='seach-form__input' icon='search' autoFocus value={queryText} placeholder='Search video on YouTube...' onChange={handlerChange}/>
@@ -31,9 +32,9 @@ const SeachForm = ({queryText, handlerInputChange, clearStore, clearSeachInput, 
 
 function MSTP (state){
     return {
-        queryText: state.query,
-    }
-}
+        queryText: state.queryText,
+    };
+};
   
 function MDTP (dispatch) {
     return {
@@ -49,7 +50,7 @@ function MDTP (dispatch) {
         handlerInputChange: function(value){
             dispatch(handlerChange(value));
         }
-    }
-}
+    };
+};
 
 export default connect(MSTP, MDTP)(SeachForm);

@@ -5,21 +5,19 @@ import SeachForm from './SeachForm/SeachForm';
 import SeachItem from './SeachItem/SeachItem';
 import HistoryItem from './HistoryItem/HistoryItem';
 import Player from './Player/Player';
-import { queryVideoListFromDB } from './redux/actions/videoListAction'
-import { getSingleVideo } from './redux/actions/currentVideoIdAction'
-import './normalize.css';
+import { queryVideoListFromDB } from './redux/actions/videoListAction';
+import { getSingleVideo } from './redux/actions/currentVideoIdAction';
 import './App.css';
-
 
 class App extends Component {
 
   componentDidMount = () =>{
-    this.props.getVideoFromDB()
-    setTimeout(() => this.props.videoList.length > 0 && this.props.getVideoId(this.props.videoList[0].videoId), 500)
-  }
+    this.props.getVideoFromDB();
+    setTimeout(() => this.props.videoList.length > 0 && this.props.getVideoId(this.props.videoList[0].videoId), 500);
+  };
   
   render() {
-    const {seachList, videoList} = this.props
+    const {seachList, videoList} = this.props;
     return (
       <div className="wrapper">
         <div className='history-wrapper'>
@@ -38,25 +36,25 @@ class App extends Component {
         </div>
       </div>
     );
-  }
-}
+  };
+};
 
-function MSTP (state) {
+function MSTP (state){
   return {
       seachList: state.seachList,
       videoList: state.videoList,
-  }
-}
+  };
+};
 
-function MDTP (dispatch) {
+function MDTP (dispatch){
   return {
       getVideoFromDB: function(){
-          dispatch(queryVideoListFromDB())
+          dispatch(queryVideoListFromDB());
       },
       getVideoId: function(id){
           dispatch(getSingleVideo(id));
       },
-  }
-}
+  };
+};
 
 export default connect(MSTP, MDTP)(App);

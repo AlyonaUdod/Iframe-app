@@ -1,6 +1,6 @@
 import * as actionTypes from '../actions/types';
 
-export default function query(state='', action) {
+export default function queryText(state='', action){
     switch (action.type) {
         case actionTypes.HANDLER_CHANGE:
             return action.payload;
@@ -8,5 +8,5 @@ export default function query(state='', action) {
             return action.payload;
         default: 
             return state;
-    }
-}
+    };
+};

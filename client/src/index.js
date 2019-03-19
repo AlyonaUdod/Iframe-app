@@ -5,6 +5,7 @@ import store from './redux/store/store';
 import App from './App.js';
 import * as serviceWorker from './serviceWorker';
 import 'semantic-ui-css/semantic.min.css'
+import './normalize.css';
 import './index.css';
 
 ReactDOM.render(

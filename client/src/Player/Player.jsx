@@ -12,7 +12,6 @@ const Player = ({videoId}) => {
             display="initial"
             position="relative"
             allowFullScreen
-            autoplay="autoplay"
             />
     );
 };
@@ -20,7 +19,7 @@ const Player = ({videoId}) => {
 function MSTP (state){
     return {
        videoId: state.videoId
-    }
+    };
 }
 
 export default connect(MSTP, null)(Player);
