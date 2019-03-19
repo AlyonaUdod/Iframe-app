@@ -20,7 +20,7 @@ mongoose.set('useCreateIndex', true);
 mongoose.connect(process.env.MONGODB_URL);
 
 app.use('/api/video', postsRoutes);
-app.use(express.static('./frontend/build'));
+app.use(express.static('./client/build'));
 
 app.use((req, res, next) => {
   res
