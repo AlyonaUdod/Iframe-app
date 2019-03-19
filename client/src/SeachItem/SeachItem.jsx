@@ -3,15 +3,17 @@ import {connect} from 'react-redux';
 import { Image, List, Button } from 'semantic-ui-react';
 import { getSingleVideo } from '../redux/actions/currentVideoIdAction';
 import { clearSeach } from '../redux/actions/seachAction';
-import { addVideoToDB} from '../redux/actions/videoListAction';
+import { addVideoToDB } from '../redux/actions/videoListAction';
+import { clearInput } from '../redux/actions/queryAction';
 
 
-const SeachItem = ({thumbnail, title, videoId, getVideoId, clearStore, addVideo}) => {
+const SeachItem = ({thumbnail, title, videoId, getVideoId, clearStore, addVideo, clearSeachInput}) => {
 
     function getId(id){
         getVideoId(id);
-        clearStore();
         saveVideoToDB(id, title);
+        clearStore();
+        clearSeachInput();
     }
 
     function saveVideoToDB(id, title){
@@ -37,11 +39,14 @@ const SeachItem = ({thumbnail, title, videoId, getVideoId, clearStore, addVideo}
 
 function MDTP (dispatch) {
     return {
-        getVideoId: function (id){
+        getVideoId: function(id){
             dispatch(getSingleVideo(id))
         },
         clearStore: function(){
             dispatch(clearSeach())
+        },
+        clearSeachInput: function(){
+            dispatch(clearInput())
         },
         addVideo: function(obj){
             dispatch(addVideoToDB(obj))

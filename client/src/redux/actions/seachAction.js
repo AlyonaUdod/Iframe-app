@@ -1,7 +1,6 @@
 import * as actionTypes from '../actions/types';
 import { getVideoList } from '../api/apiYouTube';
 
-// 
 export const queryVideo = (param) => dispatch => {
     return getVideoList(param)
     .then(res => dispatch(seachVideo(res.data)))

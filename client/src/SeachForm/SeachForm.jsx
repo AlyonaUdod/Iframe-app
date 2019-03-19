@@ -1,53 +1,55 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Input, Form, Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { queryVideo, clearSeach } from '../redux/actions/seachAction';
+import { handlerChange, clearInput } from '../redux/actions/queryAction';
 
-class SeachInput extends Component {
-    state = {
-        query: '',
+const SeachForm = ({queryText, handlerInputChange, clearStore, clearSeachInput, seachVideo}) => {
+
+    function handlerChange(e){
+        handlerInputChange(e.target.value);
     };
 
-    chandlerChange = (e) => {
-        this.setState({ 
-            query: e.target.value
-        })
+    function clearSeach() {
+        clearStore();
+        clearSeachInput();
     };
 
-    clearSeach = () => {
-        this.props.clearStore();
-        this.setState({
-            query: '',
-        })
-    };
-
-    seachVideoOnYoutube = () => {
-        if (this.state.query){
-            this.props.query(this.state.query);
+    function seachVideoOnYoutube(){
+        if(queryText){
+            seachVideo(queryText);
         }
     };
-
-  render() {
-    const {query} = this.state;
     return (
-        <Form className='seach-form' onSubmit={this.seachVideoOnYoutube}>
-            <Input className='seach-form__input' icon='search' autoFocus value={query} placeholder='Search video on YouTube...' onChange={this.chandlerChange}/>
+        <Form className='seach-form' onSubmit={seachVideoOnYoutube}>
+            <Input className='seach-form__input' icon='search' autoFocus value={queryText} placeholder='Search video on YouTube...' onChange={handlerChange}/>
             <Button type='submit' color='green'>Seach</Button>
-            <Button type='reset' color='red' onClick={this.clearSeach}>Reset</Button>
+            <Button type='reset' color='red' onClick={clearSeach}>Reset</Button>
         </Form>
-    )
-  }
+    );
+};
+
+function MSTP (state){
+    return {
+        queryText: state.query,
+    }
 }
   
 function MDTP (dispatch) {
     return {
-        query: function(param){
+        seachVideo: function(param){
             dispatch(queryVideo(param));
         },
         clearStore: function(){
             dispatch(clearSeach());
+        },
+        clearSeachInput: function(){
+            dispatch(clearInput());
+        },
+        handlerInputChange: function(value){
+            dispatch(handlerChange(value));
         }
     }
 }
 
-export default connect(null, MDTP)(SeachInput);
+export default connect(MSTP, MDTP)(SeachForm);
